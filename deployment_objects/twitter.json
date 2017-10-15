@@ -1,0 +1,33 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "twitter-deployment"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "twitter-collector",
+          "tenant": ""
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "twitter-collector-ctr",
+            "image": "gcr.io/xops-poc/twitter:1.0",
+            "imagePullPolicy": "Always",
+            "env": [
+              {
+                "name": "configs",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

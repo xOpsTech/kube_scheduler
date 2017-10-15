@@ -1,0 +1,38 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDekNDQWZPZ0F3SUJBZ0lRSkY5OXU5MldGN3BCMVZ4WWlKbTc2VEFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRME1UWTJNMlk0WmkwMk1UYzBMVFExTkRndFltRmhZaTAwTmpNd1pHTmtOV1JoTkRNdwpIaGNOTVRjd09URXdNVGd4TlRBNVdoY05Nakl3T1RBNU1Ua3hOVEE1V2pBdk1TMHdLd1lEVlFRREV5UTBNVFkyCk0yWTRaaTAyTVRjMExUUTFORGd0WW1GaFlpMDBOak13WkdOa05XUmhORE13Z2dFaU1BMEdDU3FHU0liM0RRRUIKQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNoT0ZpUXcvNFlkTkh2UGVoM2xyMmI2cldsOG52U2w4RnBJeTdCYndqegp2RWN5S1llOURFUDZGMFNvdEs4VVYxZkFCc1VwUyt3T29iaXJKZFpFbUhTN3o1OXhaZ1kvZXNia3pjNnlIQmdoCnJwdFkwa3FzQUlXTzRsbnBNSUppRU9KY3hkL2FydjhVR1FZQWRYWmg4L1RFWDJteWhyelUzTXh5RXl3NUZGMGEKaWY2anRpSWhkNlE2TEhKN1FUUndZemxmVXgwVEZLSm1sY3cyWGxDZEp1NTlFKzNCcldkV2pka1JNN0xmNnJHQgpWMlJzZExCTmJIaEZ5Q2dHd2NaUzdGSFVNNytWNmtHZHR6TjJBK1dFNFVwOVovTFd4dzRjRVF1TTYwYnBSYXB2CnhLWkN5WTNzTUl2WFdjclV3blNKcUJ0QStUMlNIMGFXUURqdEJZR1NnR1JwQWdNQkFBR2pJekFoTUE0R0ExVWQKRHdFQi93UUVBd0lDQkRBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFBWQpjRlphZURFYlV6TFByZDVXZms2Y1VnMzlNRXlvUmZERmJuU2dUVjBCWndST1dLOVRncHBPNnNmVDNXOFpTM0xYCmdQVGFYbVZhdkI3a1liaXUyWHhvOGE3dWdwUkMyUEdwMGwra2VLZHVZNngveFh1eUNCdkZXbnFYZ2FmZHpRbTEKQlE0Q0d2a0NyRjBmc2pCeDdoU3RuM1I2a0pUckZaNm12U2xxVU0rZnNoRS9JSk13cE5PS0pZeUlkNS9MaUVIdgptVnUxTWxGcVI1NFRvaHBLNFQxcTVxcFpZZmVSZzN0Q0tSNEQvQ0ZVYzVvczNUUGVOY01tVkhCR0pSNDczOUxEClRIb015aEk5KzJUYXBLN2NDUFYzZmpEOGVWQ2JyM3pZcUpjNTRXWmx3MFZwcXB6TGozbTZrUHpBczRzczBMVXIKSGxoMXV4U0tCVnpPQm82SnYzODQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    server: https://35.185.7.55
+  name: gke_xops-poc_us-east1-d_jenkins-cd
+- cluster:
+    certificate-authority: C:\Users\vmaniev\.minikube\ca.crt
+    server: https://192.168.99.100:8443
+  name: minikube
+contexts:
+- context:
+    cluster: gke_xops-poc_us-east1-d_jenkins-cd
+    user: gke_xops-poc_us-east1-d_jenkins-cd
+  name: gke_xops-poc_us-east1-d_jenkins-cd
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: gke_xops-poc_us-east1-d_jenkins-cd
+kind: Config
+preferences: {}
+users:
+- name: gke_xops-poc_us-east1-d_jenkins-cd
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.Gl3MBEFOdSslZah-LoSa885a1_o4A_b9jaETM9YUm6Gj33iRwYBl8Wr41r5E1s1IjlBq3v92odTlOzpOpAYMvhQbGxDSZoBLZvxt-o5yY1-dK9sIbwVSXplCyQog7iY
+        cmd-args: config config-helper --format=json
+        cmd-path: C:\Program Files\google-cloud-sdk\bin\gcloud.cmd
+        expiry: 2017-09-20T17:38:32Z
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+- name: minikube
+  user:
+    client-certificate: C:\Users\vmaniev\.minikube\apiserver.crt
+    client-key: C:\Users\vmaniev\.minikube\apiserver.key

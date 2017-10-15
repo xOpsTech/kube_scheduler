@@ -1,0 +1,26 @@
+{
+  "apiVersion": "apps/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "kube-scheduler-deployment"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "kube-scheduler"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "kube-scheduler-ctr",
+            "image": "gcr.io/xops-poc/kube-scheduler:1.2",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}
