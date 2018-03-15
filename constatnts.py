@@ -1,3 +1,3 @@
-ES_IP = "35.196.113.225"
-MONGO_IP = "104.198.246.223"
+ES_IP = "elastic.xops.it"
+MONGO_IP = "xview.xops.it"
 SCHEDULER_INTERVAL = 60  # in seconds
