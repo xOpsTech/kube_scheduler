@@ -16,7 +16,7 @@
         "containers": [
           {
             "name": "kube-scheduler-ctr",
-            "image": "gcr.io/xops-poc/kube-scheduler:1.2",
+            "image": "gcr.io/xops-poc/kube-scheduler:1.5",
             "imagePullPolicy": "Always"
           }
         ]
