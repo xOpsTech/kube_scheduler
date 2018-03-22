@@ -2,22 +2,22 @@
   "apiVersion": "extensions/v1beta1",
   "kind": "Deployment",
   "metadata": {
-    "name": "twitter-deployment"
+    "name": "health-collector"
   },
   "spec": {
     "replicas": 1,
     "template": {
       "metadata": {
         "labels": {
-          "app": "twitter-collector",
+          "app": "health-collector",
           "tenant": ""
         }
       },
       "spec": {
         "containers": [
           {
-            "name": "twitter-collector-ctr",
-            "image": "gcr.io/xops-poc/twitter:1.2",
+            "name": "health-collector-ctr",
+            "image": "gcr.io/xops-poc/health-collector:1.0",
             "imagePullPolicy": "Always",
             "env": [
               {

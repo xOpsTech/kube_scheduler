@@ -8,6 +8,7 @@ from pytz import utc
 client = MongoClient(constatnts.MONGO_IP, 27017)
 db = client['xops']
 tenant_collection = db['tenants']
+compulsory_services_collection = db['compulsory_services']
 
 
 def read_services():
@@ -22,25 +23,22 @@ def read_services():
 
 
 def act_on_services(tenant_id, services):
+    user_service_set = set()
     for service in services:
+        user_service_set.add(service.get('serviceId'))
         service_name = service.get('service')
         service_started = service.get('service_started')
         if service_started is False:
             print('deploying ' + service_name)
             service['tenant'] = tenant_id
 
-            # configs_json = {
-            #     'tenant': tenant_id,
-            #     'url': service.get('url'),
-            #     'username': service.get('username'),
-            #     'password': service.get('password')
-            # }
-
             pykube_util.deploy(service)
             print('deployed %s successfully' % service_name)
             update_doc(tenant_id)
         else:
             print("%s is already deployed for tenant %s" % (service_name, tenant_id))
+
+    start_compulsory_services(tenant_id, user_service_set)
 
 
 def update_doc(tenant_id):
@@ -49,6 +47,29 @@ def update_doc(tenant_id):
         {"$set": {"services.$.service_started": True}}
     )
     print('updated db')
+
+
+def add_doc(tenant_id, json_to_add):
+    tenant_collection.update(
+        {"_id": tenant_id},
+        {"$push": {"services": json_to_add}}
+    )
+    print('added to db')
+
+
+def start_compulsory_services(tenant_id, user_service_set):
+    for compulsory_service in compulsory_services_collection.find():
+        compulsory_service_id = compulsory_service.get('serviceId')
+
+        if compulsory_service_id not in user_service_set:
+            service_name = compulsory_service.get('service')
+            service_json = {'tenant': tenant_id, 'service': service_name}
+            pykube_util.deploy(service_json)
+            print('deployed compulsory service %s successfully' % service_name)
+
+            json_to_add = {'serviceId': compulsory_service_id, 'service': service_name, 'service_started': True,
+                           "active": True}
+            add_doc(tenant_id, json_to_add)
 
 
 # read_services()
