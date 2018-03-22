@@ -4,7 +4,7 @@ import json
 import os
 
 print("initializing kube config")
-# api = pykube.HTTPClient(pykube.KubeConfig.from_file('C:/Users/vmaniev/.kube/config'))
+# api = pykube.HTTPClient(pykube.KubeConfig.from_file('/home/pasindu/.kube/config'))
 api = pykube.HTTPClient(pykube.KubeConfig.from_service_account())
 # api = pykube.HTTPClient(pykube.KubeConfig.from_file('config'))
 # api = pykube.HTTPClient(pykube.KubeConfig.from_file('/home/kubernetes/kube-env'))
@@ -86,4 +86,14 @@ def deploy(configs_json):
     # pykube.ReplicationController(api, replication_controler_obj).create()
     pykube.Deployment(api, deployment_obj).create()
 
+def get_services():
+    """Return set of services."""
+    filters = set()
+    for svc in pykube.Service.objects(api).filter(namespace=pykube.all):
+        print(svc)
+    return filters
+
 # print(pykube.Pod.exists('jenkins'))
+
+
+

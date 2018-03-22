@@ -1,0 +1,35 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "logstash-deployment"
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "labels": {
+          "type": "logstash"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "image": "logstash:2.3",
+            "name": "logstash",
+            "ports": [
+              {
+                "containerPort": 5044,
+                "name": "beats"
+              }
+            ],
+            "command": [
+              "logstash",
+              "-e",
+              "input { beats { port => 5044 } file {path => \"/var/log/test.log\"} } output { stdout { } elasticsearch { hosts => [\"elastic.xops.it:9200\"] index => \"all_logs\" } }"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
