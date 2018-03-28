@@ -1,0 +1,33 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "eventListener"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "eventListener",
+          "tenant": ""
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "eventListener-ctr",
+            "image": "gcr.io/xops-poc/eventlistener:1.0",
+            "imagePullPolicy": "Always",
+            "env": [
+              {
+                "name": "configs",
+                "value": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

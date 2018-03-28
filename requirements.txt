@@ -3,4 +3,4 @@ apscheduler
 pymongo
 pykube
 google-cloud-storage
-pyOpenSSL
+#pyOpenSSL
