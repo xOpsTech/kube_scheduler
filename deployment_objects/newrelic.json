@@ -17,7 +17,7 @@
         "containers": [
           {
             "name": "newrelic-collector-ctr",
-            "image": "gcr.io/xops-poc/newrelic:1.5",
+            "image": "gcr.io/xsum-227615/newrelic:1.0",
             "imagePullPolicy": "Always",
             "env": [
               {

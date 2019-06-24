@@ -17,7 +17,7 @@
         "containers": [
           {
             "name": "eventListener-ctr",
-            "image": "gcr.io/xops-poc/eventlistener:1.0",
+            "image": "gcr.io/xsum-227615/eventlistener:1.0",
             "imagePullPolicy": "Always",
             "env": [
               {

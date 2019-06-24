@@ -17,7 +17,7 @@
         "containers": [
           {
             "name": "twitter-collector-ctr",
-            "image": "gcr.io/xops-poc/twitter:1.2",
+            "image": "gcr.io/xsum-227615/twitter:1.0",
             "imagePullPolicy": "Always",
             "env": [
               {

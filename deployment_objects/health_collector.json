@@ -17,7 +17,7 @@
         "containers": [
           {
             "name": "health-collector-ctr",
-            "image": "gcr.io/xops-poc/health-collector:1.0",
+            "image": "gcr.io/xsum-227615/health-collector:1.0",
             "imagePullPolicy": "Always",
             "env": [
               {
