@@ -1,11 +1,16 @@
 {
-  "apiVersion": "extensions/v1beta1",
+  "apiVersion": "apps/v1",
   "kind": "Deployment",
   "metadata": {
     "name": "newrelic-deployment"
   },
   "spec": {
     "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "newrelic-collector"
+      }
+    },
     "template": {
       "metadata": {
         "labels": {
